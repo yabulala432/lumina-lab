@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum BatchStatus {
+  OPTIMAL
+  DEGRADING
+  EXPIRED
+}
+
+model Batch {
+  id            String         @id @default(cuid())
+  name          String
+  ingredients   Json
+  phLevel       Float
+  mixedAt       DateTime
+  expiresAt     DateTime
+  status        BatchStatus
+  treatmentLogs TreatmentLog[]
+  createdAt     DateTime       @default(now())
+}
+
+model TreatmentLog {
+  id          String   @id @default(cuid())
+  room        String
+  esthetician String
+  usedAt      DateTime @default(now())
+
+  batchId String
+  batch   Batch  @relation(fields: [batchId], references: [id])
+}
