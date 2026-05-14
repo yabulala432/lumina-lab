@@ -16,6 +16,7 @@ export default function DashboardPage() {
     const alertRes = await fetch("/api/alerts");
     const alertData = await alertRes.json();
 
+    console.log({ batchData });
     setBatches(batchData);
     setAlerts(alertData);
   }
@@ -41,9 +42,10 @@ export default function DashboardPage() {
         </div>
 
         <div className="lg:col-span-2 grid gap-4">
-          {batches.map((batch: any) => (
-            <BatchCard key={batch.id} batch={batch} />
-          ))}
+          {batches.length &&
+            batches.map((batch: any) => (
+              <BatchCard key={batch.id} batch={batch} />
+            ))}
         </div>
       </div>
     </main>

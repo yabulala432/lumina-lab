@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(batch);
   } catch (error) {
+    console.log({ error });
     return NextResponse.json(
       { error: "Unable to create batch" },
       { status: 500 },

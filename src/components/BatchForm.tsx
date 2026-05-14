@@ -48,6 +48,7 @@ export default function BatchForm({ onSuccess }: { onSuccess: () => void }) {
 
       <input
         name="batchName"
+        id="batchName"
         placeholder="Batch Name"
         className="w-full bg-zinc-800 rounded-xl p-3"
       />
@@ -66,7 +67,9 @@ export default function BatchForm({ onSuccess }: { onSuccess: () => void }) {
         className="w-full bg-zinc-800 rounded-xl p-3"
       />
 
+      <label htmlFor="mixedAt">Mixed At</label>
       <input
+        id="mixedAt"
         type="datetime-local"
         name="mixedAt"
         className="w-full bg-zinc-800 rounded-xl p-3"
